@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atividade Guiada — Revisão de Excel</title>
+<style>
+:root{--blue:#286fa8;--navy:#26384a;--green:#278653;--yellow:#fff4d6;--pale:#eaf4fc;--bg:#f1f5f9;--line:#dce4eb;--muted:#64748b}
+*{box-sizing:border-box}body{margin:0;padding:20px;background:var(--bg);font:16px/1.65 "Segoe UI",Tahoma,sans-serif;color:#303944}
+.container{max-width:980px;margin:auto;background:#fff;padding:clamp(20px,4vw,42px);border-radius:15px;box-shadow:0 8px 28px #1e293b12}
+h1{text-align:center;color:var(--navy);font-size:clamp(1.7rem,4vw,2.3rem);line-height:1.2;margin:0 0 8px}
+.subtitle{text-align:center;color:var(--muted);margin-bottom:28px}
+h2{color:var(--blue);border-bottom:2px solid #e8edf2;padding-bottom:8px;margin-top:34px}h3{color:var(--navy);margin-top:25px}
+.scenario,.instructions,.tip{padding:16px 19px;border-radius:9px;margin:18px 0}.scenario{background:var(--yellow);border-left:5px solid #e6ae2e}.instructions{background:var(--pale);border:1px solid #c8e0f5}.tip{background:#eef1f4;text-align:left;color:#465364}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:550px;margin:14px 0 20px}th,td{border:1px solid var(--line);padding:11px 13px;text-align:left}th{background:var(--blue);color:#fff}tbody tr:nth-child(even){background:#f7f9fb}
+.mission{border:1px solid var(--line);border-left:5px solid var(--green);border-radius:8px;padding:16px 18px;margin:15px 0}.mission strong{color:var(--green)}
+.small{font-size:.93rem;color:var(--muted)}code{background:#f0f3f6;padding:2px 5px;border-radius:4px}
+@media(max-width:600px){body{padding:8px}.container{padding:20px 14px}th,td{padding:9px}}
+@media print{body{background:#fff;padding:0}.container{box-shadow:none}}
+
+/* Dicas rápidas das funções: aparecem ao passar o mouse ou ao focar pelo teclado */
+.function-tip {
+  position: relative;
+  display: inline-block;
+  color: #205f91;
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+  font-weight: 700;
+  outline-offset: 3px;
+}
+.function-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 9px);
+  transform: translate(-50%, 4px);
+  width: min(290px, 78vw);
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #243447;
+  color: #fff;
+  font-size: .84rem;
+  font-weight: 400;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  box-shadow: 0 5px 18px rgba(0,0,0,.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 20;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+}
+.function-tip:hover::after,
+.function-tip:focus::after,
+.function-tip:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+@media (hover: none) {
+  .function-tip::after {
+    left: 0;
+    transform: translateY(4px);
+  }
+  .function-tip:hover::after,
+  .function-tip:focus::after,
+  .function-tip:focus-visible::after {
+    transform: translateY(0);
+  }
+}
+
+</style>
+</head>
+<body><main class="container">
+<h1>📊 Simulado de Revisão Prática</h1>
+<div class="subtitle">Organização de Vendas · Informática Básica 2</div>
+<div class="scenario"><strong>🏢 Seu cenário:</strong> você trabalha no setor administrativo de uma loja e recebeu uma planilha de vendas desorganizada. Sua missão é padronizar os nomes, separar informações, calcular valores e produzir um pequeno resumo para a gerência usando as funções estudadas em aula.</div>
+
+<h2>Passo 1 — Prepare a planilha</h2>
+<div class="instructions"><p>Abra o Excel e crie uma planilha com duas abas:</p><ol><li>Na primeira aba, chamada <strong>Vendas</strong>, copie a tabela principal a partir da célula A1.</li><li>Crie uma segunda aba chamada <strong>Precos</strong> e copie a tabela de apoio a partir da célula A1.</li><li>Se preferir, faça a atividade no Google Sheets. Os nomes das funções podem variar conforme o programa e o idioma.</li></ol></div>
+
+<h3>Tabela principal — aba Vendas</h3><p class="small">Copie os dados exatamente como aparecem, incluindo espaços extras e diferenças entre maiúsculas e minúsculas.</p>
+<div class="table-wrap"><table><thead><tr><th>Vendedor (original)</th><th>Código do produto</th><th>Quantidade</th><th>Preço unitário (R$)</th></tr></thead><tbody>
+<tr><td>  mArIa  sILvA</td><td>TEC-Notebook</td><td>2</td><td>3500</td></tr>
+<tr><td>jOãO  pEdRo   </td><td>MOV-Mesa</td><td>3</td><td>450</td></tr>
+<tr><td> cArLoS  </td><td>TEC-Monitor</td><td>1</td><td>800</td></tr>
+<tr><td>  mArIa  sILvA</td><td>MOV-Cadeira</td><td>4</td><td>250</td></tr>
+<tr><td>ANA  LUIZA</td><td>TEC-Notebook</td><td>1</td><td>3500</td></tr>
+</tbody></table></div>
+
+<h3>Tabela de apoio — aba Precos</h3><div class="table-wrap"><table><thead><tr><th>Produto</th><th>Preço (R$)</th></tr></thead><tbody>
+<tr><td>Notebook</td><td>3500</td></tr><tr><td>Monitor</td><td>800</td></tr><tr><td>Mesa</td><td>450</td></tr><tr><td>Cadeira</td><td>250</td></tr>
+</tbody></table></div>
+
+<h2>Passo 2 — Missões práticas</h2>
+<p>Volte para a aba <strong>Vendas</strong>. Na linha 1, escreva os títulos abaixo nas colunas indicadas. Depois, digite a fórmula na célula indicada para a primeira venda (linha 2). Quando o resultado estiver correto, copie ou arraste a fórmula para as linhas seguintes.</p>
+<div class="table-wrap"><table><thead><tr><th>Célula</th><th>Título da coluna</th><th>O que ficará nela</th></tr></thead><tbody>
+<tr><td>E1</td><td>Vendedor oficial</td><td>Nome corrigido e padronizado</td></tr>
+<tr><td>F1</td><td>Produto</td><td>Nome do produto sem a categoria</td></tr>
+<tr><td>G1</td><td>Valor da venda</td><td>Quantidade multiplicada pelo preço unitário</td></tr>
+<tr><td>H1</td><td>Classificação</td><td>Venda alta ou venda comum</td></tr>
+<tr><td>I1</td><td>Preço consultado</td><td>Preço encontrado na aba Precos</td></tr>
+</tbody></table></div>
+<div class="mission"><strong>Missão 1 — Padronize o nome (coluna E)</strong><ol><li>Clique na célula <strong>E2</strong>.</li><li>Use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =ARRUMAR(texto). Remove espaços extras, mantendo um único espaço entre palavras. Ex.: =ARRUMAR(A2).">ARRUMAR</span> para retirar espaços extras e <span class="function-tip" tabindex="0" data-tip="Sintaxe: =PRI.MAIÚSCULA(texto). Deixa a primeira letra de cada palavra maiúscula. Ex.: =PRI.MAIÚSCULA(ARRUMAR(A2)).">PRI.MAIÚSCULA</span> para deixar a primeira letra de cada palavra maiúscula.</li><li>O nome “  mArIa  sILvA” deve ficar como <strong>Maria Silva</strong>.</li><li>Depois, copie a fórmula de E2 para E3 até E6.</li></ol></div>
+<div class="mission"><strong>Missão 2 — Separe o nome do produto (coluna F)</strong><ol><li>Clique na célula <strong>F2</strong>.</li><li>Use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =SUBSTITUIR(texto; texto_antigo; novo_texto). Troca uma parte do texto por outra. Ex.: =SUBSTITUIR(B2;&quot;TEC-&quot;;&quot;&quot;) remove TEC-.">SUBSTITUIR</span> para retirar do código a parte da categoria: “TEC-” ou “MOV-”.</li><li>O resultado de “TEC-Notebook” deve ser <strong>Notebook</strong>; o de “MOV-Mesa” deve ser <strong>Mesa</strong>.</li><li>Copie a fórmula de F2 até F6. Confira se nenhum resultado ficou com o hífen ou com a categoria.</li></ol></div>
+<div class="mission"><strong>Missão 3 — Calcule o valor da venda (coluna G)</strong><ol><li>Clique na célula <strong>G2</strong>.</li><li>Multiplique a quantidade da coluna C pelo preço unitário da coluna D.</li><li>Copie a fórmula até G6.</li><li>Selecione os valores da coluna G e aplique o formato <strong>Moeda (R$)</strong>.</li></ol><p class="small">Exemplo: 2 unidades a R$ 3.500,00 cada resultam em R$ 7.000,00.</p></div>
+<div class="mission"><strong>Missão 4 — Classifique a venda (coluna H)</strong><ol><li>Clique na célula <strong>H2</strong>.</li><li>Use a função <span class="function-tip" tabindex="0" data-tip="Sintaxe: =SE(teste_lógico; valor_se_verdadeiro; valor_se_falso). Escolhe um resultado conforme uma condição.">SE</span> para verificar o valor total que está na coluna G.</li><li>Se o valor for maior ou igual a R$ 1.000,00, mostre <strong>Venda alta</strong>. Se for menor, mostre <strong>Venda comum</strong>.</li><li>Copie a fórmula até H6.</li></ol></div>
+<div class="mission"><strong>Missão 5 — Consulte a tabela de preços (coluna I)</strong><ol><li>Clique na célula <strong>I2</strong>.</li><li>Use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =PROCV(valor_procurado; matriz_tabela; núm_índice_coluna; FALSO). Procura na primeira coluna da tabela e retorna um valor de outra coluna. FALSO pede correspondência exata.">PROCV</span> para procurar o produto da célula F2 na primeira coluna da aba <strong>Precos</strong>.</li><li>Peça à função que retorne o preço da segunda coluna e que procure uma correspondência exata.</li><li>Copie a fórmula até I6.</li><li>Compare os valores encontrados na coluna I com os preços unitários originais da coluna D. Eles devem ser iguais.</li></ol></div>
+<div class="mission"><strong>Missão 6 — Monte um resumo das vendas</strong><ol><li>Escolha um espaço vazio da planilha, por exemplo, a partir de <strong>K1</strong>.</li><li>Escreva os indicadores: Total vendido, Média por venda, Maior venda, Menor venda e Quantidade de vendas.</li><li>Use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =SOMA(intervalo). Soma os números do intervalo. Ex.: =SOMA(G2:G6).">SOMA</span> para somar os valores de G2 a G6.</li><li>Use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =MÉDIA(intervalo). Calcula a média dos valores numéricos. Ex.: =MÉDIA(G2:G6).">MÉDIA</span> para calcular o valor médio de G2 a G6.</li><li>Use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =MÁXIMO(intervalo). Retorna o maior número do intervalo. Ex.: =MÁXIMO(G2:G6).">MÁXIMO</span> e <span class="function-tip" tabindex="0" data-tip="Sintaxe: =MÍNIMO(intervalo). Retorna o menor número do intervalo. Ex.: =MÍNIMO(G2:G6).">MÍNIMO</span> para encontrar o maior e o menor valor da coluna G.</li><li>Use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =CONT.VALORES(intervalo). Conta quantas células não estão vazias. Ex.: =CONT.VALORES(G2:G6).">CONT.VALORES</span> para contar quantas células preenchidas existem de G2 a G6.</li><li>Como desafio adicional, use <span class="function-tip" tabindex="0" data-tip="Sintaxe: =SOMASE(intervalo_critério; critério; intervalo_soma). Soma apenas os valores que atendem a uma condição.">SOMASE</span> para somar apenas as vendas de Maria Silva, usando os nomes corrigidos da coluna E como critério e os valores da coluna G para somar.</li></ol></div>
+
+<h2>Passo 3 — Nova tabela: cadastro e prazos</h2>
+<p>Agora você vai praticar funções de <strong>texto</strong> e <strong>data</strong> usando uma nova tabela. Na aba <strong>Vendas</strong>, copie os dados abaixo a partir da célula <strong>K1</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Nome</th><th>Sobrenome</th><th>Data do pedido</th><th>Prazo de entrega</th></tr></thead><tbody>
+<tr><td>mariana</td><td>costa</td><td>15/10/2026</td><td>20/10/2026</td></tr>
+<tr><td>JOÃO</td><td>pereira</td><td>16/10/2026</td><td>22/10/2026</td></tr>
+<tr><td>luiza</td><td>ALMEIDA</td><td>19/10/2026</td><td>23/10/2026</td></tr>
+</tbody></table></div>
+
+<div class="mission"><strong>Missão 7 — Monte o nome completo (funções de texto)</strong>
+<ol>
+<li>Na célula <strong>O1</strong>, escreva o título <strong>Nome completo</strong>.</li>
+<li>Na célula <strong>O2</strong>, una o Nome e o Sobrenome da mesma linha usando <strong>CONCATENAR</strong> ou <strong>UNIRTEXTO</strong>.</li>
+<li>Se usar CONCATENAR, lembre-se de inserir um espaço entre os nomes. Exemplo: <code>=CONCATENAR(K2;" ";L2)</code>.</li>
+<li>Copie a fórmula para as linhas seguintes. O resultado deve mostrar nome e sobrenome separados por um espaço.</li>
+<li>Como revisão adicional, você pode aplicar <strong>PRI.MAIÚSCULA</strong> e <strong>ARRUMAR</strong> ao resultado para padronizar o nome.</li>
+</ol></div>
+
+<div class="mission"><strong>Missão 8 — Calcule os dias úteis até o prazo (funções de data)</strong>
+<ol>
+<li>Na célula <strong>P1</strong>, escreva o título <strong>Dias úteis até o prazo</strong>.</li>
+<li>Na célula <strong>P2</strong>, use <strong>DIATRABALHOTOTAL</strong> para contar os dias úteis entre a data de hoje e o prazo de entrega informado na coluna N.</li>
+<li>Use <strong>HOJE</strong> para que a data inicial seja atualizada automaticamente. Exemplo: <code>=DIATRABALHOTOTAL(HOJE();N2)</code>.</li>
+<li>Copie a fórmula para as linhas seguintes. Sábados e domingos não entram na contagem.</li>
+<li>Observe que HOJE muda conforme o dia em que a planilha é aberta; por isso, o resultado pode mudar em outra data.</li>
+</ol></div>
+
+<h2>Passo 4 — Confira antes de entregar</h2>
+
+<ul><li>Os nomes estão sem espaços extras e com as iniciais maiúsculas?</li><li>A coluna Produto mostra apenas o nome do produto, sem a categoria e o hífen?</li><li>O valor total de cada venda é quantidade × preço unitário?</li><li>A consulta com PROCV encontra o preço correto?</li><li>O resumo apresenta total, média, maior valor, menor valor e quantidade de registros?</li><li>O nome completo foi unido com um espaço entre nome e sobrenome?</li><li>A função de dias úteis desconsiderou sábados e domingos?</li></ul>
+<div class="tip"><strong>💡 Dica de ouro:</strong> ficou com dúvida? Consulte suas anotações e atividades anteriores ou peça ajuda ao professor. Se precisar de apoio extra, use uma ferramenta de IA para entender a estrutura da fórmula — e não apenas copiar a resposta.</div>
+</main></body></html>
